@@ -15,8 +15,8 @@ public class Tests : TestBase
     [Test]
     public void Part2()
     {
-        var similaryScore = new Day1().GetSimilaryScore(Input);
+        var similarityScore = new Day1().GetSimilarityScore(Input);
         
-        Console.WriteLine(similaryScore);
+        Console.WriteLine(similarityScore);
     }
 }
