@@ -16,15 +16,25 @@ public class Day2
             .Count(IsSafeWithDampener);
     }
     
-    private bool IsSafeWithDampener(IReadOnlyCollection<int> report)
+    private static bool IsSafeWithDampener(IReadOnlyCollection<int> report)
     {
         var safeCountThreshold = report.Count;
         
         var isAscending = report.ElementAt(1) > report.ElementAt(0);
-        return report.Count((x, y) => isAscending ? y > x && y <= x + 3 : y < x && y >= x - 3) >= safeCountThreshold - 2;
+        return report.Count((x, y) => IsSafe(isAscending, y, x)) >= safeCountThreshold - 2;
     }
 
-    private bool IsSafe(IReadOnlyCollection<int> report)
+    private static bool IsSafe(bool isAscending, int first, int second)
+    {
+        if (isAscending)
+        {
+            return first > second && first <= second + 3;
+        }
+
+        return first < second && first >= second - 3;
+    }
+
+    private static bool IsSafe(IReadOnlyCollection<int> report)
     {
         var isAscending = report.ElementAt(1) > report.ElementAt(0);
         return report.All((x, y) => isAscending ? y > x && y <= x + 3 : y < x && y >= x - 3);
