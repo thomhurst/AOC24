@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+
+  <PropertyGroup Condition="'$(MSBuildProjectName)' != 'Test.Utilities'">
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(MSBuildProjectName)' != 'Test.Utilities'">
+    <PackageReference Include="TUnit" />
+    <ProjectReference Include="..\Test.Utilities\Test.Utilities.csproj" />
+
+    <None Include="$(MSBuildProjectDirectory)\input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+
+</Project>
