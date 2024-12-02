@@ -7,7 +7,7 @@ public class Tests : TestBase
     [Test]
     public void Part1()
     {
-        var safeCount = new Day2().CountSafe(Input);
+        var safeCount = new Day2.Day2().CountSafe(Input);
         
         Console.WriteLine(safeCount);
     }
@@ -15,8 +15,8 @@ public class Tests : TestBase
     [Test]
     public void Part2()
     {
-        // var similaryScore = new Day1().GetSimilaryScore(Input);
-        //
-        // Console.WriteLine(similaryScore);
+        var safeWithDampenerCount = new Day2.Day2().CountSafeWithDampener(Input);
+        
+        Console.WriteLine(safeWithDampenerCount);
     }
 }
