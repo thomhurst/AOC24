@@ -18,10 +18,10 @@ public class Day2
     
     private static bool IsSafeWithDampener(IReadOnlyCollection<int> report)
     {
-        var safeCountThreshold = report.Count;
+        var safeCountThreshold = report.Count - 2;
         
         var isAscending = report.ElementAt(1) > report.ElementAt(0);
-        return report.Count((x, y) => IsSafe(isAscending, y, x)) >= safeCountThreshold - 2;
+        return report.Count((x, y) => IsSafe(isAscending, y, x)) >= safeCountThreshold;
     }
 
     private static bool IsSafe(IReadOnlyCollection<int> report)
