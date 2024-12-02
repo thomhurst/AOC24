@@ -24,6 +24,12 @@ public class Day2
         return report.Count((x, y) => IsSafe(isAscending, y, x)) >= safeCountThreshold - 2;
     }
 
+    private static bool IsSafe(IReadOnlyCollection<int> report)
+    {
+        var isAscending = report.ElementAt(1) > report.ElementAt(0);
+        return report.All((x, y) => IsSafe(isAscending, y, x));
+    }
+
     private static bool IsSafe(bool isAscending, int first, int second)
     {
         if (isAscending)
@@ -32,12 +38,6 @@ public class Day2
         }
 
         return first < second && first >= second - 3;
-    }
-
-    private static bool IsSafe(IReadOnlyCollection<int> report)
-    {
-        var isAscending = report.ElementAt(1) > report.ElementAt(0);
-        return report.All((x, y) => isAscending ? y > x && y <= x + 3 : y < x && y >= x - 3);
     }
 
     private static IEnumerable<IReadOnlyCollection<int>> GetReports(string input)
